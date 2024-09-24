@@ -1,4 +1,13 @@
 {
+  "name": "s-t",
+  "version": "1.0.0",
+  "description": "여승원 최고 <---- ㅋㅋㅋ 뭐라노",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@emotion/styled": "^11.13.0",
     "react": "^18.3.1",
