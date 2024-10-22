@@ -1,44 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar'
+import React from 'react'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import Clock from '../../components/Clock/Clock'
 
 import * as S from '../Main/Main.style'
 import button from '../../asset/image/search.svg'
 
 const Main = () => {
-    const nowTime = () => {
-        let now = new Date();
-        let hour = String(now.getHours()).padStart(2, "0");
-        let minute = String(now.getMinutes()).padStart(2, "0");
-        return `${hour}:${minute}`
-    };
-    const nowDate = () => {
-        let now = new Date();
-        let year = String(now.getFullYear()).padStart(2, "0");
-        let month = String(now.getMonth() + 1).padStart(2, "0");
-        let date = String(now.getDate()).padStart(2, "0");
-        return `${year}/${month}/${date}`
-    };
-
-    const [time, setTime] = useState(nowTime)
-    const [date, setDate] = useState(nowDate)
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTime(nowTime());
-            setDate(nowDate());
-        }, 1000);
-
-        return () => clearInterval(timer)
-    }, [])
 
     return (
         <S.Wrap>
             <Sidebar />
             <S.Container>
-                <S.Clock>
-                    <h1>{time}</h1>
-                    <div>{date}</div>
-                </S.Clock>
+                <Clock />
                 <S.Schedule>
                     <S.Text>
                         <span>오늘 3개의 일정이 있어요!</span>

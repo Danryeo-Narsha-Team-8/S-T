@@ -1,11 +1,11 @@
 import React from 'react'
-import * as S from '../components/Sidebar.style'
+import * as S from '../Sidebar/Sidebar.style'
 
-import logo from '../asset/image/logo.svg'
-import st from '../asset/image/S-T.svg'
-import teacher from '../asset/image/teacher2.svg'
-import setting from '../asset/image/setting.svg'
-import profile from '../asset/image/profile.svg'
+import logo from '../../asset/image/logo.svg'
+import st from '../../asset/image/S-T.svg'
+import teacher from '../../asset/image/teacher2.svg'
+import setting from '../../asset/image/setting.svg'
+import profile from '../../asset/image/profile.svg'
 
 const Sidebar = () => {
     return (

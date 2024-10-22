@@ -13,19 +13,6 @@ export const Container = styled.div`
     align-items: center;
 `
 
-export const Clock = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 20px;
-
-    h1{
-        margin: 10px;
-    }
-`
-
-
-
 export const Schedule = styled.div`
     border-radius: 20px;
     background-color: #A18CD1;
