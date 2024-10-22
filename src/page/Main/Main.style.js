@@ -9,7 +9,6 @@ export const Container = styled.div`
     width: calc(100vw - 210px);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
 `
 
@@ -20,6 +19,7 @@ export const Schedule = styled.div`
     width: 45vw;
     height: 30vh;
     padding: 15px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;

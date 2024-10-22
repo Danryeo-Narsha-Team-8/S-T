@@ -1,10 +1,10 @@
 import React from 'react'
-import Main from './page/Main/Main'
+import Router from './Router'
 
 const App = () => {
   return (
     <>
-      <Main />
+      <Router />
     </>
   )
 }
