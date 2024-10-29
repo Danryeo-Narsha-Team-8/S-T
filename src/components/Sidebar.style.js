@@ -6,18 +6,25 @@ export const Wrap = styled.div`
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-image: linear-gradient(to bottom, #9B6DC7, #FFACAC);
 `
 
 export const Head = styled.div`
     display: flex;
     margin: 10px 0;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 70px;
 
     img{
         width: 60px;
     }
+`
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+
 `
 
 export const Container = styled.div`
@@ -26,7 +33,6 @@ export const Container = styled.div`
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 `
 
 export const Button = styled.div`
@@ -36,7 +42,7 @@ export const Button = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 15px 20px;
-    /* background-color: white; 클릭시 변경 */ 
+    /* background-color: white; 클릭 시 변경 */ 
 
     img{
         width: 25px;
@@ -46,6 +52,21 @@ export const Button = styled.div`
 export const BtnText = styled.span`
     margin: 0 20px;
     color: white;
+    /* color: black; 클릭 시 변경 */
     font-weight: 600;
 `
 
+export const Bottom = styled.div`
+    margin: 40px auto;
+    border-radius: 25px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    background-color: white;
+
+    div{
+        font-weight: 600;
+    }
+`
