@@ -46,54 +46,48 @@ const Main = () => {
                         <img src={button} alt="img" />
                     </S.Input>
                     <S.ListBox2>
-                        <S.Head>
-                            <div>이름</div>
-                            <div>연락 가능 여부</div>
-                            <div>위치</div>
-                            <div>선생님 일정 추가</div>
-                        </S.Head>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
-                        <S.List2>
-                            <div>선생1</div>
-                            <div>가능</div>
-                            <div>1-2</div>
-                            <div>일정추가</div>
-                        </S.List2>
+                        <S.Table>
+                            <thead>
+                                <tr>
+                                    <S.Th>이름</S.Th>
+                                    <S.Th>연락 가능 여부</S.Th>
+                                    <S.Th>위치</S.Th>
+                                    <S.Th>선생님 일정 추가</S.Th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <S.Td>선생1</S.Td>
+                                    <S.Td>가능</S.Td>
+                                    <S.Td>1-2</S.Td>
+                                    <S.Td>일정추가</S.Td>
+                                </tr>
+                                <tr>
+                                    <S.Td>선생1</S.Td>
+                                    <S.Td>가능</S.Td>
+                                    <S.Td>1-2</S.Td>
+                                    <S.Td>일정추가</S.Td>
+                                </tr>
+                                <tr>
+                                    <S.Td>선생1</S.Td>
+                                    <S.Td>가능</S.Td>
+                                    <S.Td>1-2</S.Td>
+                                    <S.Td>일정추가</S.Td>
+                                </tr>
+                                <tr>
+                                    <S.Td>선생1</S.Td>
+                                    <S.Td>가능</S.Td>
+                                    <S.Td>1-2</S.Td>
+                                    <S.Td>일정추가</S.Td>
+                                </tr>
+                                <tr>
+                                    <S.Td>선생1</S.Td>
+                                    <S.Td>가능</S.Td>
+                                    <S.Td>1-2</S.Td>
+                                    <S.Td>일정추가</S.Td>
+                                </tr>
+                            </tbody>
+                        </S.Table>
                     </S.ListBox2>
                 </S.Content>
             </S.Container>

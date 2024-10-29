@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const Schedule = styled.div`
     border-radius: 20px;
     background-color: #A18CD1;
-    box-shadow: 2px 1px 3px 1px gray;
+    box-shadow: 3px 5px 3px 1px gainsboro;
     width: 45vw;
     height: 30vh;
     padding: 15px;
@@ -70,7 +70,7 @@ export const Content = styled.div`
     height: 40vh;
     border-radius: 20px;
     background-color: #A18CD1;
-    box-shadow: 2px 1px 3px 1px gray;
+    box-shadow: 3px 5px 3px 1px gainsboro;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -108,25 +108,24 @@ export const ListBox2 = styled.div`
     }
 `
 
-export const Head = styled.div`
-    border-radius: 10px 10px 0 0;
+export const Table = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+`
+
+export const Th = styled.th`
     background-color: #9B7DF3;
     color: white;
-    height: 15%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    div{
-        margin-left: 20px;
-    }
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
 `
 
-export const List2 = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+export const Td = styled.td`
+    padding: 10px;
+    text-align: center;
+    color: #333;
+    border-top: 1px solid #ddd;
     background-color: white;
-    height: 15%;
-    border-bottom: 1px solid lightgray;
 `
+
