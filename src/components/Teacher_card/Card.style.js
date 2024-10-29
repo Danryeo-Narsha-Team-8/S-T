@@ -88,4 +88,5 @@ export const Button = styled.div`
     padding: 7px 30px;
     color: #8E5CF7;
     font-weight: 700;
+    cursor: pointer;
 `

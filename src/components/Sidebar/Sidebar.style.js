@@ -15,6 +15,7 @@ export const Head = styled.div`
     margin: 10px 0;
     justify-content: space-evenly;
     height: 70px;
+    cursor: pointer;
 
     img{
         width: 60px;
@@ -42,6 +43,7 @@ export const Button = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding: 15px 20px;
+    cursor: pointer;
     /* background-color: white; 클릭 시 변경 */ 
 
     img{
