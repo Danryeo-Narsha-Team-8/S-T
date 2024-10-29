@@ -48,7 +48,7 @@ export const SList = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 10px;
 
     div{
         margin-right: 15px;
@@ -63,6 +63,10 @@ export const Name = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+export const List_content = styled.div`
+    flex: 1 1;
 `
 
 export const Content = styled.div`

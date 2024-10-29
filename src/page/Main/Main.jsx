@@ -20,22 +20,22 @@ const Main = () => {
                     <S.ListBox>
                         <S.SList>
                             <S.Name>선생님1</S.Name>
-                            <div>content</div>
+                            <S.List_content>content</S.List_content>
                             <div>date</div>
                         </S.SList>
                         <S.SList>
                             <S.Name>선생님2</S.Name>
-                            <div>content</div>
+                            <S.List_content>content</S.List_content>
                             <div>date</div>
                         </S.SList>
                         <S.SList>
                             <S.Name>선생님1</S.Name>
-                            <div>content</div>
+                            <S.List_content>content</S.List_content>
                             <div>date</div>
                         </S.SList>
                         <S.SList>
                             <S.Name>선생님2</S.Name>
-                            <div>content</div>
+                            <S.List_content>content</S.List_content>
                             <div>date</div>
                         </S.SList>
                     </S.ListBox>
