@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./T_main.css";
 import Sidebar from "../Sidebar";
 
-const App = () => {
+const T_main = () => {
   const [isAvailable, setIsAvailable] = useState(false);
   const [location, setLocation] = useState("미술실");
+  const [situation, setSituation] = useState("회의 중");
   const [inputValue, setInputValue] = useState("");
 
   const handleAvailabilityChange = () => {
@@ -16,6 +17,10 @@ const App = () => {
       setLocation(inputValue);
       setInputValue("");
     }
+  };
+
+  const handleSituationChange = (newSituation) => {
+    setSituation(newSituation);
   };
 
   return (
@@ -62,16 +67,19 @@ const App = () => {
             </div>
             <div className="situation">
               <div className="situation-ui">
-                <p className="current-location-title">현재 상태</p>
-                <p className="current-location">{location}</p>
+                <p className="current-situation-title">현재 상태</p>
+                <p className="current-situation">{situation}</p>
               </div>
               <div className="status-buttons">
-                <button className="status-button active">회의 중</button>
-                <button className="status-button">수업 중</button>
-                <button className="status-button">휴식 중</button>
-                <button className="status-button">외출 중</button>
-                <button className="status-button">퇴근</button>
-                <button className="status-button">기타</button>
+                {["회의 중", "수업 중", "휴식 중", "외출 중", "퇴근", "기타"].map((status) => (
+                  <button
+                    key={status}
+                    className={`status-button ${situation === status ? "active" : ""}`}
+                    onClick={() => handleSituationChange(status)}
+                  >
+                    {status}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -81,4 +89,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default T_main;

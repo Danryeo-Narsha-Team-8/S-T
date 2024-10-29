@@ -177,12 +177,9 @@
   border: 0;
   border-bottom: solid 1px #000;
   padding: 5px;
-  width: 200px;
+  width: 180px;
   margin-bottom: 5px;
-  font-size: 16px;
-}
-
-.location_input {
+  font-size: 14px;
   outline:none;
 }
 
@@ -233,6 +230,17 @@
   width: 80px;
   height: 32px;
   text-align: center;
+}
+
+.current-situation-title {
+  margin: 25px 0 5px 0;
+  font-size: 15px;
+}
+
+.current-situation {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .status-button.active {
