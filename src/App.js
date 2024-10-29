@@ -1,10 +1,10 @@
 import React from 'react'
-import Sidebar from '../src/components/Sidebar'
+import Router from './Router'
 
 const App = () => {
   return (
     <>
-      <Sidebar />
+      <Router />
     </>
   )
 }
