@@ -78,3 +78,21 @@ export const InputDate = styled.input`
     margin: 15px;
     background-color: transparent;
 `
+
+export const Buttons = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+`
+
+export const Button = styled.button`
+    width: 200px;
+    height: 55px;
+    margin: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #907DEF;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+`

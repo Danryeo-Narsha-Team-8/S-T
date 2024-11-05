@@ -44,6 +44,10 @@ const Schedule = () => {
             </S.InputBg>
           </S.Margin>
         </S.Content>
+        <S.Buttons>
+          <S.Button>취소</S.Button>
+          <S.Button>추가</S.Button>
+        </S.Buttons>
       </S.Container>
     </S.Wrap>
   )
