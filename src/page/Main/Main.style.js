@@ -36,6 +36,10 @@ export const Text = styled.div`
     color: white;
 `
 
+export const Add = styled.span`
+    cursor: pointer;
+`
+
 export const ListBox = styled.div`
     height: 90%;
 `
@@ -84,21 +88,24 @@ export const Content = styled.div`
 export const Input = styled.div`
     border: none;
     border-radius: 15px;
-    width: 13vw;
+    width: 50%;
     margin: 5px 30px 15px 30px;
-    padding: 5px 0;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: baseline;
-`
 
-export const Search = styled.input`
-    border: none;
-    border-radius: 15px;
-    width: 70%;
-    height: 100%;
+    input{
+        width: 100%;
+        border: none;
+        padding: 10px;
+        border-radius: 13px;
+    }
+    img{
+        margin-left: 3px;
+        margin-right: 10px;
+    }
 `
 
 export const ListBox2 = styled.div`

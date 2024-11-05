@@ -24,7 +24,7 @@ const Sidebar = () => {
                             <img src={teacher} alt="teacher-logo" />
                             <S.BtnText>선생님</S.BtnText>
                         </S.Button>
-                        <S.Button>
+                        <S.Button onClick={() => navigate('/Profile')}>
                             <img src={setting} alt="setting-logo" />
                             <S.BtnText>프로필</S.BtnText>
                         </S.Button>

@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../Sidebar"; // Sidebar 컴포넌트 경로에 맞게 수정해주세요
+import Sidebar from "../../components/Sidebar/Sidebar"
 import icon from '../../asset/image/profile.svg'
 import "./profile.css";
 

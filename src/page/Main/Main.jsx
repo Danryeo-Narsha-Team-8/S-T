@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Clock from '../../components/Clock/Clock'
 
@@ -6,6 +7,7 @@ import * as S from '../Main/Main.style'
 import button from '../../asset/image/search.svg'
 
 const Main = () => {
+    const navigate = useNavigate();
 
     return (
         <S.Wrap>
@@ -14,8 +16,8 @@ const Main = () => {
                 <Clock />
                 <S.Schedule>
                     <S.Text>
-                        <span>오늘 3개의 일정이 있어요!</span>
-                        <span>+</span>
+                        <span>오늘 4개의 일정이 있어요!</span>
+                        <S.Add onClick={() => navigate('/Schedule')}>+</S.Add>
                     </S.Text>
                     <S.ListBox>
                         <S.SList>
@@ -42,7 +44,7 @@ const Main = () => {
                 </S.Schedule>
                 <S.Content>
                     <S.Input>
-                        <S.Search placeholder='검색' />
+                        <input placeholder='검색' />
                         <img src={button} alt="img" />
                     </S.Input>
                     <S.ListBox2>

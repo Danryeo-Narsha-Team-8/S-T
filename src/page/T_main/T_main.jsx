@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./T_main.css";
-import Sidebar from "../Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const T_main = () => {
   const [isAvailable, setIsAvailable] = useState(false);

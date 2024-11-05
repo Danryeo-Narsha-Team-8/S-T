@@ -18,18 +18,18 @@ export const Container = styled.div`
 
 export const Input = styled.div`
     border: 1px solid;
-    border-radius: 15px;
+    border-radius: 17px;
     width: 70%;
-    padding: 10px;
+    padding-left: 10px;
     margin: 20px;
     display: flex;
     align-items: center;
 
     input{
         width: 100%;
-        height: 100%;
         border: none;
         padding: 10px;
+        border-radius: 15px;
     }
 `
 
