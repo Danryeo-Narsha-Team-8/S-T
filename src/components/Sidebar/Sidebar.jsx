@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "../Sidebar/Sidebar.style";
 import st from "../../image/ST.svg";
 import teacher from "../../image/teacher2.svg";
-import setting from "../../image/teacher.svg";
+import setting from "../../image/setting2.svg";
 import profile from "../../image/profile.svg";
 import logo from "../../image/logo.png";
 
