@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Clock from "../../components/Clock/Clock";
 import * as S from "./S_main.style";
-import styles from "./S_main.module.css";
+import style from "./S_main.module.css";
 import button from "../../image/search.svg";
 import TeacherCard from "../../components/S_main/TeacherCard";
 import Schedule from "../../components/S_main/Schedule";
@@ -14,7 +14,6 @@ import teacher from "../../firebase/teacher";
 const Main = () => {
   const [loading, setLoading] = useState(true);
   const [workList, setWorkList] = useState(null);
-  const [workListLen, setWorkListLen] = useState(0);
 
   const [teacherList, setTeacherList] = useState(null);
   const [filteredTeacherList, setFilteredTeacherList] = useState(null);
@@ -72,12 +71,12 @@ const Main = () => {
 
     fetchTeacherList();
     fetchWorkList();
+    localStorage.removeItem("Teacher_name");
   }, [email]);
 
   // workList와 teacherList가 모두 로드되면 loading 상태 변경
   useEffect(() => {
     if (workList !== null && teacherList !== null) {
-      console.log(workList);
       setLoading(false);
     }
   }, [workList, teacherList]);
@@ -94,7 +93,7 @@ const Main = () => {
         <S.Schedule>
           <S.Text>
             <span style={{ fontWeight: "bold" }}>
-              오늘 {workListLen}개의 일정이 있어요!
+              오늘 {Object.values(workList).length}개의 일정이 있어요!
             </span>
             <S.Add onClick={() => navigate("/Schedule")}>+</S.Add>
           </S.Text>
@@ -132,7 +131,7 @@ const Main = () => {
                   <S.Th>선생님 일정 추가</S.Th>
                 </tr>
               </thead>
-              {filteredTeacherList && TeacherListLen > 0 ? (
+              {filteredTeacherList && filteredTeacherList.length > 0 ? (
                 filteredTeacherList.map((teacherItem, index) => (
                   <TeacherCard
                     key={index}
@@ -142,9 +141,9 @@ const Main = () => {
                   />
                 ))
               ) : (
-                <tr className={styles.none_T_tr}>
-                  <td colSpan="4">선생님을 찾을 수 없습니다.</td>
-                </tr>
+                <div className={style.none_T_tr}>
+                  <th colSpan="4">선생님을 찾을 수 없습니다.</th>
+                </div>
               )}
             </S.Table>
           </S.ListBox2>

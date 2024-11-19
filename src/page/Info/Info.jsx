@@ -4,49 +4,57 @@ import Clock from "../../components/Clock/Clock";
 import Card from "../../components/Teacher_card/Card";
 
 import button from "../../image/search.svg";
+import Style from "./Info.module.css";
 import * as S from "../Info/Info.style";
 
 import teacher from "../../firebase/teacher";
 
+import NotFindImg from "../../image/notFind.png";
+
 const Info = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [dataLen, setDataLen] = useState(0);
+
+  //전채 선생님 리스트
+  const [teacherList, setTeacherList] = useState(null);
+  //글짜로 찾는 선생님 리스트
+  const [filteredTeacherList, setFilteredTeacherList] = useState(null);
 
   const [searchInputValue, setSearchInputValue] = useState("");
 
+  const email = localStorage.getItem("email");
+
+  // 선생님 리스트 가져오기
   useEffect(() => {
-    const fetchTeachers = async () => {
+    const fetchTeacherList = async () => {
       try {
-        const teachers = await teacher.getTeachers();
-        setData(teachers);
-        setDataLen(teachers.length);
-        setLoading(false);
-        console.log(data);
+        const TeacherList = await teacher.getTeachers();
+        setTeacherList(TeacherList);
       } catch (err) {
-        console.log(err);
-        setLoading(false);
+        console.log("오류", err);
       }
     };
-    fetchTeachers();
-  }, []);
+    fetchTeacherList();
+  }, [email]);
 
-  // 선생님 리스트 필터링
+  //검색 값
   useEffect(() => {
     if (teacherList !== null) {
-      const filteredList = f.filter((teacherItem) =>
+      const filteredList = teacherList.filter((teacherItem) =>
         teacherItem.name.toLowerCase().includes(searchInputValue.toLowerCase())
       );
       setFilteredTeacherList(filteredList);
     }
   }, [searchInputValue, teacherList]);
 
+  // 로딩 여부 확인
+  useEffect(() => {
+    if (teacherList !== null) {
+      setLoading(false);
+    }
+  }, [teacherList]);
+
   if (loading) {
-    return (
-      <div>
-        <p>로딩중 입니다...</p>
-      </div>
-    );
+    return <div>로딩 중...</div>; // 로딩 중일 때 화면 표시
   }
 
   return (
@@ -63,19 +71,20 @@ const Info = () => {
           />
         </S.Input>
         <S.Teacher>
-          {dataLen > 0 ? (
-            data.map((teacherItem, index) => (
+          {filteredTeacherList && filteredTeacherList.length > 0 ? (
+            filteredTeacherList.map((teacherItem, index) => (
               <Card
                 key={index}
-                communicationState={teacherItem.communicationState}
                 name={teacherItem.name}
                 state={teacherItem.state}
+                communicationState={teacherItem.communicationState}
                 location={teacherItem.location}
               />
             ))
           ) : (
-            <div>
-              <p>선생님을 찾을 수 없습니다.</p>
+            <div className={Style.none_T_div}>
+              <img src={NotFindImg} className={Style.NotFindImg}></img>
+              <h2>선생님을 찾을 수 없습니다!</h2>
             </div>
           )}
         </S.Teacher>
