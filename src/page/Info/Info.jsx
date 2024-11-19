@@ -13,6 +13,8 @@ const Info = () => {
   const [data, setData] = useState([]);
   const [dataLen, setDataLen] = useState(0);
 
+  const [searchInputValue, setSearchInputValue] = useState("");
+
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
@@ -29,6 +31,16 @@ const Info = () => {
     fetchTeachers();
   }, []);
 
+  // 선생님 리스트 필터링
+  useEffect(() => {
+    if (teacherList !== null) {
+      const filteredList = f.filter((teacherItem) =>
+        teacherItem.name.toLowerCase().includes(searchInputValue.toLowerCase())
+      );
+      setFilteredTeacherList(filteredList);
+    }
+  }, [searchInputValue, teacherList]);
+
   if (loading) {
     return (
       <div>
@@ -44,7 +56,11 @@ const Info = () => {
         <Clock />
         <S.Input>
           <img src={button} alt="" />
-          <input type="text" placeholder="검색" />
+          <input
+            type="text"
+            placeholder="검색"
+            onChange={(event) => setSearchInputValue(event.target.value)}
+          />
         </S.Input>
         <S.Teacher>
           {dataLen > 0 ? (

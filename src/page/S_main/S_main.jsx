@@ -19,6 +19,7 @@ const Main = () => {
   const [teacherList, setTeacherList] = useState(null);
   const [filteredTeacherList, setFilteredTeacherList] = useState(null);
   const [TeacherListLen, setTeacherListLen] = useState(0);
+
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const navigate = useNavigate();
@@ -27,16 +28,16 @@ const Main = () => {
   // 값이 있는지 확인
   useEffect(() => {
     localStorage.removeItem("Teacher_named");
-
     if (
       !localStorage.getItem("name") ||
       !localStorage.getItem("email") ||
-      localStorage.getItem("role") != "student"
+      localStorage.getItem("role") !== "student"
     ) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
+  // 선생님 리스트 필터링
   useEffect(() => {
     if (teacherList !== null) {
       const filteredList = teacherList.filter((teacherItem) =>
@@ -53,11 +54,9 @@ const Main = () => {
       try {
         const worklist = await student.findwork(email);
         setWorkList(worklist);
-        setWorkListLen(Object.keys(worklist).length);
+        console.log(workList);
       } catch (err) {
         console.log("오류", err);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -68,8 +67,6 @@ const Main = () => {
         setTeacherListLen(Object.keys(TeacherList).length);
       } catch (err) {
         console.log("오류", err);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -77,8 +74,16 @@ const Main = () => {
     fetchWorkList();
   }, [email]);
 
+  // workList와 teacherList가 모두 로드되면 loading 상태 변경
+  useEffect(() => {
+    if (workList !== null && teacherList !== null) {
+      console.log(workList);
+      setLoading(false);
+    }
+  }, [workList, teacherList]);
+
   if (loading) {
-    return <div>로딩 중...</div>;
+    return <div>로딩 중...</div>; // 로딩 중일 때 화면 표시
   }
 
   return (
@@ -94,7 +99,7 @@ const Main = () => {
             <S.Add onClick={() => navigate("/Schedule")}>+</S.Add>
           </S.Text>
           <S.ListBox>
-            {workList ? (
+            {workList && Object.keys(workList).length > 0 ? (
               Object.values(workList).map((workItem, index) => (
                 <Schedule
                   key={index}
@@ -105,7 +110,7 @@ const Main = () => {
                 />
               ))
             ) : (
-              <div></div>
+              <div>일정이 없습니다.</div>
             )}
           </S.ListBox>
         </S.Schedule>
@@ -127,7 +132,7 @@ const Main = () => {
                   <S.Th>선생님 일정 추가</S.Th>
                 </tr>
               </thead>
-              {filteredTeacherList && filteredTeacherList.length > 0 ? (
+              {filteredTeacherList && TeacherListLen > 0 ? (
                 filteredTeacherList.map((teacherItem, index) => (
                   <TeacherCard
                     key={index}

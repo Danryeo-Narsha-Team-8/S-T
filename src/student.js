@@ -1,5 +1,12 @@
+// 학생 생성과 일 추가
+// npm run student
+
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import {
   collection,
@@ -9,6 +16,7 @@ import {
   doc,
 } from "firebase/firestore/lite";
 
+// Firebase 프로젝트 설정
 const firebaseConfig = {
   apiKey: "AIzaSyD0W2E2lihwEvI6-4utdbCvVrflmQJC6-E",
   authDomain: "test001-a3974.firebaseapp.com",
@@ -19,18 +27,30 @@ const firebaseConfig = {
   measurementId: "G-MMSS39XDVS",
 };
 
+// Firebase 앱 초기화=
 const app = initializeApp(firebaseConfig);
 
+// Firestore 초기화
 const db = getFirestore(app);
 
+// 인증 초기화
 const auth = getAuth(app);
 
+//파이어베이스 변수
 const studentCol = collection(db, "student");
 const studentSnapshot = await getDocs(studentCol);
 const studentList = studentSnapshot.docs.map((doc) => doc.data());
 const studentListLen = studentList.length;
 
-//생성
+const studentEmail = "qazcgik@gmail.com"; // 이메일로 구분함 (중복되면 변경됨)
+const studentName = "서현동";
+const studentWorks = {};
+const Todo = "숙제하기";
+const TodoTeacher = "손지웅";
+const workStartDate = "2024/12/12";
+const workEndDate = "2024/12/14";
+
+// 학생 생성
 async function createStudent(email, name, works) {
   const document_name = email;
 
@@ -41,6 +61,7 @@ async function createStudent(email, name, works) {
       name: name,
       works: works,
     });
+    console.log(`${name} 학생이 추가되었습니다.`);
   } catch (error) {
     console.error("학생 생성 실패:", error);
   }
@@ -55,7 +76,7 @@ async function creatework(
   workEndDate
 ) {
   for (var number = 0; number < studentListLen; number++) {
-    if (studentList[number].email === email) {
+    if (studentList[number].email == email) {
       const studenRef = doc(db, "student", email);
 
       const key =
@@ -106,18 +127,16 @@ async function creatework(
   }
 }
 
-//찾기
+// 학생 이메일  단일 조회
 async function findstudent(email) {
   for (var number = 0; number < studentListLen; number++) {
     if (studentList[number].email === email) {
-      localStorage.setItem("name", studentList[number].name);
-      localStorage.setItem("email", studentList[number].email);
-      localStorage.setItem("role", "student");
+      console.log(`${studentList[number].name} 학생의 정보입니다.`);
+      console.log(`==============================================`);
+      console.log(studentList[number]);
     }
   }
 }
-
-//일정 조회
 async function findwork(email) {
   let count = 0;
   let w_list = {};
@@ -130,16 +149,17 @@ async function findwork(email) {
           studentList[number].works[workIndex].workStartDate.split("/");
         const end = studentList[number].works[workIndex].workEndDate.split("/");
 
-        const now = new Date();
-        const startDate = new Date(start[0], start[1] - 1, start[2]);
-        const endDate = new Date(end[0], end[1] - 1, end[2]);
+        const now = new Date(); // 현재 날짜를 now 변수에 할당
+        const startDate = new Date(start[0], start[1], start[2]);
+        const endDate = new Date(end[0], end[1], end[2]);
         const currentDate = new Date(
           now.getFullYear(),
           now.getMonth(),
           now.getDate()
         );
 
-        if (startDate <= currentDate && currentDate <= endDate) {
+        // if ( startDate => currentDate && currentDate <= endDate) {
+        if(startDate >= currentDate && currentDate <= endDate)
           w_list[count + 1] = {
             Todo: studentList[number].works[workIndex].Todo,
             TodoTeacher: studentList[number].works[workIndex].TodoTeacher,
@@ -150,8 +170,16 @@ async function findwork(email) {
         }
       }
     }
-  }
-  return w_list;
+
+  console.log(w_list);
 }
 
-export default { createStudent, creatework, findstudent, findwork };
+
+//학생 추가하기
+//createStudent(studentEmail, studentName, studentWorks);
+//일정추가하기
+//creatework(studentEmail, Todo, TodoTeacher, workStartDate, workEndDate);
+//학생(이름 추출) 찾기
+//findstudent(studentEmail);
+//일정 보여주기 : 날짜에 따라
+findwork(studentEmail);
