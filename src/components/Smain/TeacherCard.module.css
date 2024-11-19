@@ -1,0 +1,8 @@
+/* S.Td에 커서를 포인터로 바꾸는 스타일 추가 */
+.tr .clickable {
+  cursor: pointer;
+}
+
+.clickable > p {
+  cursor: pointer;
+}
