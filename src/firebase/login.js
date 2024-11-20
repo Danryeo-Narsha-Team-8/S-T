@@ -1,17 +1,14 @@
 import { initializeApp } from "firebase/app";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import {
-  collection,
-  getFirestore,
-  setDoc,
-  doc,
-  getDoc,
-} from "firebase/firestore/lite";
+import { getFirestore } from "firebase/firestore/lite";
+
+import { getDatabase, ref, onDisconnect } from "firebase/database";
 
 import student from "./student.js";
 import teacher from "./teacher.js";
@@ -30,6 +27,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+
 const auth = getAuth(app);
 
 //회원가입
@@ -46,6 +44,7 @@ async function signUp(email, password, name) {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert("회원가입에 실패하였습니다.");
+      console.log(errorCode, errorMessage);
       return false;
     });
 }
@@ -62,6 +61,7 @@ async function login(email, password) {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert("로그인에 실패하였습니다.");
+      console.log(errorCode, errorMessage);
       return false;
     });
 }
