@@ -9,6 +9,8 @@ import {
   getDoc,
 } from "firebase/firestore/lite";
 
+import { getDatabase, ref, onDisconnect } from "firebase/database";
+
 // Firebase 프로젝트 설정
 const firebaseConfig = {
   apiKey: "AIzaSyD0W2E2lihwEvI6-4utdbCvVrflmQJC6-E",

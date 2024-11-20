@@ -1,5 +1,5 @@
 import styles from "./Login.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,20 @@ import Logo from "../../image/logo.png";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("email") &&
+      localStorage.getItem("name") &&
+      localStorage.getItem("role")
+    ) {
+      if (localStorage.getItem("role") === "teacher") {
+        navigate("/t_main");
+      } else {
+        navigate("/s_main");
+      }
+    }
+  }, []);
 
   const [inputPassword, setInputPassword] = useState("");
   const [inputEmail, setInputEmail] = useState("");

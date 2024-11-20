@@ -1,13 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 
 import {
   collection,
-  getDocs,
   getFirestore,
   setDoc,
   doc,
+  getDocs,
 } from "firebase/firestore/lite";
+
+import { getDatabase, ref, onDisconnect } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0W2E2lihwEvI6-4utdbCvVrflmQJC6-E",
@@ -23,7 +24,6 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-const auth = getAuth(app);
 
 const studentCol = collection(db, "student");
 const studentSnapshot = await getDocs(studentCol);
@@ -63,7 +63,7 @@ async function creatework(
           ? 1
           : Object.keys(studentList[number].works).length + 1;
 
-      if (studentList[number].works != undefined) {
+      if (studentList[number].works !== undefined) {
         try {
           await setDoc(
             studenRef,
