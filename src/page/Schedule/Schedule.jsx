@@ -37,6 +37,7 @@ const Schedule = () => {
     student.creatework(email, work, teacher, startDate, endDate);
 
     Navigat("/s_main");
+    window.location.reload();
   }
 
   return (

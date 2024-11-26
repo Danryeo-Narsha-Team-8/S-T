@@ -17,7 +17,7 @@ const Signup = () => {
 
     if (signUpState) {
       localStorage.setItem("accessKey", "sjghRQEETGWkfadvdljpshgkfnewEFQREGW");
-      navigate("/main");
+      navigate("/Info");
     } else {
       localStorage.removeItem("accessKey");
     }

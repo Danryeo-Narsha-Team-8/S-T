@@ -6,7 +6,7 @@ export const Wrap = styled.div`
 `;
 
 export const Container = styled.div`
-  width: calc(100vw - 210px);
+  width: calc(100vw - 230px);
   display: flex;
   flex-direction: column;
   align-items: center;
