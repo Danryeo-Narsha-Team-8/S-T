@@ -20,10 +20,6 @@ const Sidebar = () => {
             <img src={st} alt="name" />
           </S.Head>
         </S.Content>
-        <S.Button onClick={() => navigate("/Info")}>
-          <img src={teacher} alt="teacher-logo" />
-          <S.BtnText>선생님</S.BtnText>
-        </S.Button>
         <S.Bottom>
           <img src={profile} alt="profile" />
           <div>{localStorage.getItem("name")}</div>
