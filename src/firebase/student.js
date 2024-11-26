@@ -29,7 +29,7 @@ const studentCol = collection(db, "student");
 const studentSnapshot = await getDocs(studentCol);
 const studentList = studentSnapshot.docs.map((doc) => doc.data());
 const studentListLen = studentList.length;
-
+ 
 //생성
 async function createStudent(email, name, works) {
   const document_name = email;

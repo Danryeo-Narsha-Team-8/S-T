@@ -73,7 +73,6 @@ const T_main = () => {
   }, []);
 
   const handleAvailabilityChange = (email) => {
-    console.log(situation);
     setIsAvailable(!isAvailable);
     teacher.ChangeTeacherCommunicationState(email);
   };

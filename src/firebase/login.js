@@ -27,7 +27,6 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-
 const auth = getAuth(app);
 
 //회원가입
@@ -35,7 +34,6 @@ async function signUp(email, password, name) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-
       student.createStudent(email, name, {});
       alert("회원가입에 성공하였습니다.");
       return true;
@@ -70,6 +68,7 @@ async function login(email, password) {
 async function setData(email) {
   await teacher.findTeacher(email);
   if (!localStorage.getItem("name")) {
+    console.log("학생 이메일 검색함");
     await student.findstudent(email);
   }
 }

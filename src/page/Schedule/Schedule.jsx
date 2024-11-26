@@ -30,10 +30,8 @@ const Schedule = () => {
 
   //일 추가
   function addWork() {
-    console.log(email);
     const startDate = `${startDay_y}/${startDay_m}/${startDay_d}`;
     const endDate = `${endDay_y}/${endDay_m}/${endDay_d}`;
-    console.log(email, work, teacher, startDate, endDate);
     student.creatework(email, work, teacher, startDate, endDate);
 
     Navigat("/s_main");

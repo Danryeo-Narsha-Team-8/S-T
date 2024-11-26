@@ -39,7 +39,6 @@ const teacherListLen = teacherList.length;
 
 // Firestore에서 선생 목록 가져오기
 async function getTeachers() {
-  //console.log(teacherList);
   return teacherList;
 }
 

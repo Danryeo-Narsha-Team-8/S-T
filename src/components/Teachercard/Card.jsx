@@ -6,6 +6,11 @@ import * as S from "../Teachercard/Card.style";
 const Card = ({ communicationState, name, state, location }) => {
   const navigate = useNavigate();
 
+  function addSchedule(event) {
+    localStorage.setItem("Teacher_name", name);
+    navigate("/Schedule");
+  }
+
   return (
     <S.Box>
       <S.Name>{name} 선생님</S.Name>
@@ -23,7 +28,9 @@ const Card = ({ communicationState, name, state, location }) => {
           <span>{communicationState ? "가능" : "불가능"}</span>
         </S.Com>
       </S.State_list>
-      <S.Button onClick={() => navigate("/Schedule")}>일정추가</S.Button>
+      <S.Button onClick={(event, name) => addSchedule(event, name)}>
+        일정추가
+      </S.Button>
     </S.Box>
   );
 };

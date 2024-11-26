@@ -16,10 +16,12 @@ const Signup = () => {
     const signUpState = await login.signUp(email, password, name);
 
     if (signUpState) {
-      localStorage.setItem("accessKey", "sjghRQEETGWkfadvdljpshgkfnewEFQREGW");
-      navigate("/Info");
+      await login.setData(email);
+      navigate("/login");
     } else {
-      localStorage.removeItem("accessKey");
+      localStorage.removeItem("email");
+      localStorage.removeItem("name");
+      localStorage.removeItem("role");
     }
   }
 

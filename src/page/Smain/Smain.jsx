@@ -53,7 +53,6 @@ const Main = () => {
       try {
         const worklist = await student.findwork(email);
         setWorkList(worklist);
-        console.log(workList);
       } catch (err) {
         console.log("오류", err);
       }
