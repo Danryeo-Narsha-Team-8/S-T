@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "S-T",
+  "description": "Teacher status notification",
+  "version": "1.1",
+  "icons": {
+    "128": "public/logo_chrome.png"
+  },
+  "app": {
+    "launch": {
+      "web_url": "https://studentteacher.netlify.app"
+    }
+  },
+  "permissions": ["unlimitedStorage"]
+}
