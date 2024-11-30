@@ -1,26 +1,12 @@
-// Firebase 프로젝트 설정
-import { initializeApp } from "firebase/app";
-import firebaseConfig from "../config.js";
-import { getAuth } from "firebase/auth";
 import {
   collection,
   getDocs,
-  getFirestore,
   setDoc,
   doc,
   getDoc,
 } from "firebase/firestore/lite";
 
-import { getDatabase, ref, onDisconnect } from "firebase/database";
-
-// Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
-
-// Firestore 초기화
-const db = getFirestore(app);
-
-// 인증 초기화
-const auth = getAuth(app);
+import { db } from "../config.js";
 
 //파이어베이스 변수
 const teacherCol = collection(db, "teacher");

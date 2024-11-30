@@ -1,5 +1,3 @@
-import { initializeApp } from "firebase/app";
-
 import {
   collection,
   getFirestore,
@@ -8,20 +6,13 @@ import {
   getDocs,
 } from "firebase/firestore/lite";
 
-import { getDatabase, ref, onDisconnect } from "firebase/database";
-
-import firebaseConfig from "../config.js";
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
+import { db } from "../config";
 
 const studentCol = collection(db, "student");
 const studentSnapshot = await getDocs(studentCol);
 const studentList = studentSnapshot.docs.map((doc) => doc.data());
 const studentListLen = studentList.length;
- 
+
 //생성
 async function createStudent(email, name, works) {
   const document_name = email;
