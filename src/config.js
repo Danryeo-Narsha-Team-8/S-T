@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 
 
-console.log("API Key:", process.env.REACT_APP_apiKey);
+
 
 
 const firebaseConfig = {
@@ -16,6 +16,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_appId,
   measurementId: process.env.REACT_APP_measurementId,
 };
+
+console.log("API Key:", firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
