@@ -9,7 +9,6 @@ function TeacherCard({ name, communicationState, location }) {
   function addSchedule(event) {
     localStorage.setItem("Teacher_name", name);
     navigate("/Schedule");
-    console.log(name);
   }
 
   return (

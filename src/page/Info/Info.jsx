@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Clock from "../../components/Clock/Clock";
 import Card from "../../components/Teachercard/Card";
@@ -13,6 +14,7 @@ import NotFindImg from "../../image/notFind.png";
 
 const Info = () => {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   //전채 선생님 리스트
   const [teacherList, setTeacherList] = useState(null);
@@ -35,6 +37,18 @@ const Info = () => {
     };
     fetchTeacherList();
   }, [email]);
+
+  // 값이 있는지 확인
+  useEffect(() => {
+    localStorage.removeItem("Teacher_name");
+    if (
+      !localStorage.getItem("name") ||
+      !localStorage.getItem("email") ||
+      localStorage.getItem("role") !== "student"
+    ) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   //검색 값
   useEffect(() => {

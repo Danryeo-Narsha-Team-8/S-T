@@ -6,6 +6,8 @@ import logo from "../../image/logo.png";
 import st from "../../image/ST.svg";
 import profile from "../../image/profile.svg";
 
+import teacher from "../../image/teacher2.svg";
+
 const Sidebar = () => {
   const navigate = useNavigate();
 
@@ -13,7 +15,7 @@ const Sidebar = () => {
     <>
       <S.Wrap>
         <S.Content>
-          <S.Head onClick={() => navigate("/")}>
+          <S.Head onClick={() => navigate("/t_main")}>
             <img src={logo} alt="logo" />
             <img src={st} alt="name" />
           </S.Head>

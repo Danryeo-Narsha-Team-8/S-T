@@ -1,35 +1,12 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import {
   collection,
   getDocs,
-  getFirestore,
   setDoc,
   doc,
   getDoc,
 } from "firebase/firestore/lite";
 
-import { getDatabase, ref, onDisconnect } from "firebase/database";
-
-// Firebase 프로젝트 설정
-const firebaseConfig = {
-  apiKey: "AIzaSyD0W2E2lihwEvI6-4utdbCvVrflmQJC6-E",
-  authDomain: "test001-a3974.firebaseapp.com",
-  projectId: "test001-a3974",
-  storageBucket: "test001-a3974.appspot.com",
-  messagingSenderId: "795659655623",
-  appId: "1:795659655623:web:d4d0358aca3998da8521e2",
-  measurementId: "G-MMSS39XDVS",
-};
-
-// Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
-
-// Firestore 초기화
-const db = getFirestore(app);
-
-// 인증 초기화
-const auth = getAuth(app);
+import { db } from "../config.js";
 
 //파이어베이스 변수
 const teacherCol = collection(db, "teacher");
@@ -39,7 +16,6 @@ const teacherListLen = teacherList.length;
 
 // Firestore에서 선생 목록 가져오기
 async function getTeachers() {
-  //console.log(teacherList);
   return teacherList;
 }
 
