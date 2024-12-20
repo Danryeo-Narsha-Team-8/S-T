@@ -2,14 +2,27 @@
   "manifest_version": 3,
   "name": "S-T",
   "description": "Teacher status notification",
-  "version": "1.1",
+  "version": "1.2",
   "icons": {
     "128": "public/logo_chrome.png"
   },
-  "app": {
-    "launch": {
-      "web_url": "https://studentteacher.netlify.app"
-    }
+  "action": {
+    "default_popup": "/index.html",
+    "default_icon": "public/logo_chrome.png"
   },
-  "permissions": ["unlimitedStorage"]
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "navigate_to_url": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Navigate to StudentTeacher page"
+    }
+  }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'self';
+      script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+      connect-src 'self' http://localhost:3000;
+      object-src 'none';
+    "
+    />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <img id="teacher-image" src="/src/image/logo.png" />
+    <input type="text" />
+    <span>아무런 정보가 없습니다.</span>
+    <script src="/libs/axios-1.x/dist/axios.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

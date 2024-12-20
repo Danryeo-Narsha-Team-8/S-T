@@ -1,0 +1,23 @@
+#teacher-image {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    margin: auto;
+    padding: 20px;
+    display: block;
+  }
+  input {
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
+  span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+  }
+  
