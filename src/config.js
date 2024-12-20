@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore/lite";
 
@@ -12,8 +11,6 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_appId,
   measurementId: process.env.REACT_APP_measurementId,
 };
-
-console.log(firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
