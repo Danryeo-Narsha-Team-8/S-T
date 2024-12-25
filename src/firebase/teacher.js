@@ -5,7 +5,6 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore/lite";
-
 import { db } from "../config.js";
 
 //파이어베이스 변수
@@ -132,6 +131,7 @@ async function ChangeTeacherstate(email, state) {
 }
 
 export default {
+  pushTeacher,
   findTeacher,
   getTeachers,
   ChangeTeacherCommunicationState,

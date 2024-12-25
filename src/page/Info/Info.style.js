@@ -31,6 +31,9 @@ export const Input = styled.div`
     border: none;
     padding: 10px;
     border-radius: 15px;
+    &:focus {
+      outline: none;
+    }
   }
 `;
 
