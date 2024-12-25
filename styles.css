@@ -1,23 +1,51 @@
+/* 전체 페이지 기본 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f3f3;
+}
+
+/* 메인 팝업 컨테이너 스타일 */
+.Box {
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 180px; /* 팝업의 배경을 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* 이미지 스타일 */
 #teacher-image {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-    margin: auto;
-    padding: 20px;
-    display: block;
-  }
-  input {
-    display: block;
-    margin: 10px auto;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 20px;
-  }
-  span {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 14px;
-    color: gray;
-  }
-  
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 50%; /* 이미지를 원형으로 */
+  background-color: #f0f0f0; /* 이미지가 없는 경우 배경 색 */
+}
+
+/* 입력 필드 스타일 */
+input {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: gray;
+}

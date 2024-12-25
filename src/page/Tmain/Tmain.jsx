@@ -45,6 +45,7 @@ const T_main = () => {
     const fetchLocationState = async () => {
       await teacher.getTeacherLocationState(localStorage.getItem("email"));
       const State = localStorage.getItem("Location");
+      console.log(State);
 
       if (State !== null) {
         setLocation(State);

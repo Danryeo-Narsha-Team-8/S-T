@@ -101,7 +101,11 @@ export const Input = styled.div`
     border: none;
     padding: 10px;
     border-radius: 13px;
+    &:focus {
+      outline: none;
+    }
   }
+
   img {
     margin-left: 3px;
     margin-right: 10px;
