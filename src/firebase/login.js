@@ -47,8 +47,9 @@ async function login(email, password) {
 async function setData(email) {
   await teacher.findTeacher(email);
   if (!localStorage.getItem("name")) {
-    console.log("학생 이메일 검색함");
     await student.findstudent(email);
+  } else {
+    await teacher.findTeacher(email);
   }
 }
 

@@ -89,7 +89,7 @@ async function creatework(
   }
 }
 
-//찾기
+//학생 정보 입력(찾기)
 async function findstudent(email) {
   for (var number = 0; number < studentListLen; number++) {
     if (studentList[number].email === email) {
