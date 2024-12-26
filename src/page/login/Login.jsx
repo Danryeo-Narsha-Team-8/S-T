@@ -35,7 +35,7 @@ const Login = () => {
       if (localStorage.getItem("role") === "teacher") {
         navigate("/t_main");
       } else {
-        navigate("/Info");
+        navigate("/s_main");
       }
     } else {
       localStorage.removeItem("email");

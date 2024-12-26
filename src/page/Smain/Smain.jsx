@@ -14,11 +14,9 @@ import teacher from "../../firebase/teacher";
 const Main = () => {
   const [loading, setLoading] = useState(true);
   const [workList, setWorkList] = useState(null);
-
   const [teacherList, setTeacherList] = useState(null);
   const [filteredTeacherList, setFilteredTeacherList] = useState(null);
   const [TeacherListLen, setTeacherListLen] = useState(0);
-
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const navigate = useNavigate();
@@ -36,16 +34,42 @@ const Main = () => {
     }
   }, [navigate]);
 
-  // 선생님 리스트 필터링
   useEffect(() => {
-    if (teacherList !== null) {
-      const filteredList = teacherList.filter((teacherItem) =>
-        teacherItem.name.toLowerCase().includes(searchInputValue.toLowerCase())
-      );
-      setFilteredTeacherList(filteredList);
-    }
-  }, [searchInputValue, teacherList]);
+    const fetchAndFilterTeachers = async () => {
+      try {
+        const teachers = await teacher.getTeachers();
 
+        // 데이터 검증 및 기본값 설정
+        const validTeachers = teachers
+          .filter((teacherItem) => teacherItem.name && teacherItem.email) // name과 email이 있는 항목만 포함
+          .map((teacherItem) => ({
+            ...teacherItem,
+            communicationState: teacherItem.communicationState ?? "정보 없음",
+            location: teacherItem.location ?? "위치 불명",
+            state: teacherItem.state ?? "상태 불명",
+          }));
+
+        setTeacherList(validTeachers);
+
+        // 필터링 적용
+        const filteredList = validTeachers.filter((teacherItem) =>
+          teacherItem.name
+            .toLowerCase()
+            .includes((searchInputValue || "").toLowerCase())
+        );
+        setFilteredTeacherList(filteredList);
+        setTeacherListLen(validTeachers.length);
+      } catch (error) {
+        console.error("선생님 데이터를 가져오는 중 오류 발생:", error);
+        setTeacherList(null);
+        setFilteredTeacherList([]);
+      }
+    };
+
+    fetchAndFilterTeachers();
+  }, [searchInputValue]);
+
+  // 일정 데이터 가져오기
   useEffect(() => {
     setLoading(true);
 
@@ -58,17 +82,6 @@ const Main = () => {
       }
     };
 
-    const fetchTeacherList = async () => {
-      try {
-        const TeacherList = await teacher.getTeachers();
-        setTeacherList(TeacherList);
-        setTeacherListLen(Object.keys(TeacherList).length);
-      } catch (err) {
-        console.log("오류", err);
-      }
-    };
-
-    fetchTeacherList();
     fetchWorkList();
     localStorage.removeItem("Teacher_name");
   }, [email]);
@@ -131,18 +144,22 @@ const Main = () => {
                 </tr>
               </thead>
               {filteredTeacherList && filteredTeacherList.length > 0 ? (
-                filteredTeacherList.map((teacherItem, index) => (
-                  <TeacherCard
-                    key={index}
-                    name={teacherItem.name}
-                    communicationState={teacherItem.communicationState}
-                    location={teacherItem.location}
-                  />
-                ))
+                filteredTeacherList.map((teacherItem, index) =>
+                  teacherItem ? (
+                    <TeacherCard
+                      key={index}
+                      name={teacherItem.name || "이름 없음"}
+                      communicationState={
+                        teacherItem.communicationState || "확인 불가"
+                      }
+                      location={teacherItem.location || "위치 불명"}
+                    />
+                  ) : null
+                )
               ) : (
-                <div className={style.none_T_tr}>
-                  <th colSpan="4">선생님을 찾을 수 없습니다.</th>
-                </div>
+                <tr className={style.none_T_tr}>
+                  <td colSpan="4">선생님을 찾을 수 없습니다.</td>
+                </tr>
               )}
             </S.Table>
           </S.ListBox2>

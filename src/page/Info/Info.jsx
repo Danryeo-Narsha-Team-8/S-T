@@ -16,9 +16,9 @@ const Info = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  //전채 선생님 리스트
+  // 전체 선생님 리스트
   const [teacherList, setTeacherList] = useState(null);
-  //글짜로 찾는 선생님 리스트
+  // 검색어에 따라 필터링된 리스트
   const [filteredTeacherList, setFilteredTeacherList] = useState(null);
 
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -30,11 +30,24 @@ const Info = () => {
     const fetchTeacherList = async () => {
       try {
         const TeacherList = await teacher.getTeachers();
-        setTeacherList(TeacherList);
+
+        // 데이터 검증 및 기본값 설정
+        const validTeachers = TeacherList.filter(
+          (teacherItem) => teacherItem.name && teacherItem.email
+        ).map((teacherItem) => ({
+          ...teacherItem,
+          communicationState: teacherItem.communicationState ?? "정보 없음",
+          state: teacherItem.state ?? "상태 불명",
+          location: teacherItem.location ?? "위치 불명",
+        }));
+
+        setTeacherList(validTeachers);
       } catch (err) {
-        console.log("오류", err);
+        console.error("선생님 데이터를 가져오는 중 오류 발생:", err);
+        setTeacherList([]);
       }
     };
+
     fetchTeacherList();
   }, [email]);
 
@@ -50,7 +63,7 @@ const Info = () => {
     }
   }, [navigate]);
 
-  //검색 값
+  // 검색 값에 따라 필터링
   useEffect(() => {
     if (teacherList !== null) {
       const filteredList = teacherList.filter((teacherItem) =>
