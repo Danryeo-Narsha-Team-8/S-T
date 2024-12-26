@@ -65,6 +65,7 @@ export const InputText = styled.input`
 
 export const InputBg = styled.div`
   background-color: #f9f8f8;
+  margin-right: 120px;
   border-radius: 10px;
   display: flex;
 `;
